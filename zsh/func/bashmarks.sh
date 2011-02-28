@@ -23,14 +23,14 @@
 
 
 # USAGE: 
-# s bookmarkname - saves the curr dir as bookmarkname
-# g bookmarkname - jumps to the that bookmark
-# g b[TAB] - tab completion is available
-# p bookmarkname - prints the bookmark
-# p b[TAB] - tab completion is available
-# d bookmarkname - deletes the bookmark
-# d [TAB] - tab completion is available
-# l - list all bookmarks
+# sbk bookmarkname - saves the curr dir as bookmarkname
+# gbk bookmarkname - jumps to the that bookmark
+# gbk b[TAB] - tab completion is available
+# pbk bookmarkname - prints the bookmark
+# pbk b[TAB] - tab completion is available
+# dbk bookmarkname - deletes the bookmark
+# dbk [TAB] - tab completion is available
+# lbk - list all bookmarks
 
 # setup file to store bookmarks
 if [ ! -n "$SDIRS" ]; then
@@ -106,12 +106,12 @@ function _compzsh {
 
 # bind completion command for g,p,d to _comp
 if [ $ZSH_VERSION ]; then
-    compctl -K _compzsh gb
-    compctl -K _compzsh pb
-    compctl -K _compzsh db
+    compctl -K _compzsh gbk
+    compctl -K _compzsh pbk
+    compctl -K _compzsh dbk
 else
     shopt -s progcomp
-    complete -F _comp gb
-    complete -F _comp pb
-    complete -F _comp db
+    complete -F _comp gbk
+    complete -F _comp pbk
+    complete -F _comp dbk
 fi
