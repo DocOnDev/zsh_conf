@@ -61,7 +61,7 @@ function p {
 }
 
 # delete bookmark
-function d {
+function db {
     _bookmark_name_valid "$@"
     if [ -z "$exit_message" ]; then
 	cat $SDIRS | grep -v "export DIR_$1=" > $SDIRS.tmp
