@@ -95,13 +95,13 @@ function _comp {
     local curw
     COMPREPLY=()
     curw=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=($(compgen -W '`_l`' -- $curw))
+    COMPREPLY=($(compgen -W '`_lb`' -- $curw))
     return 0
 }
 
 # ZSH completion command
 function _compzsh {
-    reply=($(_l))
+    reply=($(_lb))
 }
 
 # bind completion command for g,p,d to _comp
