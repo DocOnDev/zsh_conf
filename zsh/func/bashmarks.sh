@@ -39,7 +39,7 @@ fi
 touch $SDIRS
 
 # save current directory to bookmarks
-function s {
+function sb {
     _bookmark_name_valid "$@"
     if [ -z "$exit_message" ]; then
 	cat $SDIRS | grep -v "export DIR_$1=" > $SDIRS.tmp
@@ -49,13 +49,13 @@ function s {
 }
 
 # jump to bookmark
-function g {
+function gb {
     source $SDIRS
     cd "$(eval $(echo echo $(echo \$DIR_$1)))"
 }
 
 # print bookmark
-function p {
+function pb {
     source $SDIRS
     echo "$(eval $(echo echo $(echo \$DIR_$1)))"
 }
@@ -71,12 +71,12 @@ function db {
 }
 
 # list bookmarks with dirnam
-function l {
+function lb {
     source $SDIRS
     env | grep "^DIR_" | cut -c5- | grep "^.*="
 }
 # list bookmarks without dirname
-function _l {
+function _lb {
     source $SDIRS
     env | grep "^DIR_" | cut -c5- | grep "^.*=" | cut -f1 -d "="
 }
@@ -106,12 +106,12 @@ function _compzsh {
 
 # bind completion command for g,p,d to _comp
 if [ $ZSH_VERSION ]; then
-    compctl -K _compzsh g
-    compctl -K _compzsh p
-    compctl -K _compzsh d
+    compctl -K _compzsh gb
+    compctl -K _compzsh pb
+    compctl -K _compzsh db
 else
     shopt -s progcomp
-    complete -F _comp g
-    complete -F _comp p
-    complete -F _comp d
+    complete -F _comp gb
+    complete -F _comp pb
+    complete -F _comp db
 fi
