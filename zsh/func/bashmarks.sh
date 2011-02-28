@@ -39,7 +39,7 @@ fi
 touch $SDIRS
 
 # save current directory to bookmarks
-function sb {
+function sbk {
     _bookmark_name_valid "$@"
     if [ -z "$exit_message" ]; then
 	cat $SDIRS | grep -v "export DIR_$1=" > $SDIRS.tmp
@@ -49,19 +49,19 @@ function sb {
 }
 
 # jump to bookmark
-function gb {
+function gbk {
     source $SDIRS
     cd "$(eval $(echo echo $(echo \$DIR_$1)))"
 }
 
 # print bookmark
-function pb {
+function pbk {
     source $SDIRS
     echo "$(eval $(echo echo $(echo \$DIR_$1)))"
 }
 
 # delete bookmark
-function db {
+function dbk {
     _bookmark_name_valid "$@"
     if [ -z "$exit_message" ]; then
 	cat $SDIRS | grep -v "export DIR_$1=" > $SDIRS.tmp
@@ -71,12 +71,12 @@ function db {
 }
 
 # list bookmarks with dirnam
-function lb {
+function lbk {
     source $SDIRS
     env | grep "^DIR_" | cut -c5- | grep "^.*="
 }
 # list bookmarks without dirname
-function _lb {
+function _lbk {
     source $SDIRS
     env | grep "^DIR_" | cut -c5- | grep "^.*=" | cut -f1 -d "="
 }
@@ -95,13 +95,13 @@ function _comp {
     local curw
     COMPREPLY=()
     curw=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=($(compgen -W '`_lb`' -- $curw))
+    COMPREPLY=($(compgen -W '`_lbk`' -- $curw))
     return 0
 }
 
 # ZSH completion command
 function _compzsh {
-    reply=($(_lb))
+    reply=($(_lbk))
 }
 
 # bind completion command for g,p,d to _comp
