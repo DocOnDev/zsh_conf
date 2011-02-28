@@ -1,10 +1,11 @@
-# My zsh configuration
-To make this configuration work create symbolic links to your home directory.
+source /zsh_conf/zsh/func/bashmarks.sh
 
-`cd`
-
-`ln -s /somewhere/zsh_conf/zsh .zsh`
-
-`ln -s /somewhere/zsh_conf/zshrc .zshrc`
-
-`ln -s /somewhere/zsh_conf/zshenv .zshenv`
+USAGE: 
+sbk bookmarkname - saves the curr dir as bookmarkname
+gbk bookmarkname - jumps to the that bookmark
+gbk b[TAB] - tab completion is available
+pbk bookmarkname - prints the bookmark
+pbk b[TAB] - tab completion is available
+dbk bookmarkname - deletes the bookmark
+dbk [TAB] - tab completion is available
+lbk - list all bookmarks
